@@ -39,16 +39,16 @@ static const char lol_pointer_size_bits = sizeof(void *) * 8;
  * ilp64
  * silp64
  */
-static const uint8_t* lol_data_model[] =
+static const u8* lol_data_model[] =
 {
     /* bytes: char, short, int, long, pointer */
 
-    (uint8_t[]){8, 16, 16, 32, 32}, /* lp32 */
-    (uint8_t[]){8, 16, 32, 32, 32}, /* ilp32 */
-    (uint8_t[]){8, 16, 32, 64, 64}, /* lp64 */
-    (uint8_t[]){8, 16, 32, 32, 64}, /* llp64 */
-    (uint8_t[]){8, 16, 64, 64, 64}, /* ilp64 */
-    (uint8_t[]){8, 16, 32, 64, 64}  /* silp64 */
+    (u8[]){8, 16, 16, 32, 32}, /* lp32 */
+    (u8[]){8, 16, 32, 32, 32}, /* ilp32 */
+    (u8[]){8, 16, 32, 64, 64}, /* lp64 */
+    (u8[]){8, 16, 32, 32, 64}, /* llp64 */
+    (u8[]){8, 16, 64, 64, 64}, /* ilp64 */
+    (u8[]){8, 16, 32, 64, 64}  /* silp64 */
 };
 
 /* function to print the size of the types in bytes */
@@ -87,7 +87,7 @@ void lol_print_datamodel_sizes()
 /* function to print the target data model */
 void lol_print_datamodel()
 {
-    size_t i;   /* iterator */
+    usize i;   /* iterator */
     for (i = 0; i < sizeof(lol_data_model)/sizeof(lol_data_model[0]); i++)
     {
         if (   lol_char_size_bits    == lol_data_model[i][0]

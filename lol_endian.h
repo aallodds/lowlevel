@@ -5,9 +5,9 @@
 #include "lol_core.h"
 
 /* test value */
-static const uint32_t lol_endian_test_value = 0x01020304;
+static const u32 lol_endian_test_value = 0x01020304;
 /* pointer to the bytes */
-static uint8_t *lol_endian_test_bytes = (uint8_t *)&lol_endian_test_value;
+static u8* lol_endian_test_bytes = (u8 *)&lol_endian_test_value;
 
 /**
  * table of known endianness models
@@ -21,19 +21,19 @@ static uint8_t *lol_endian_test_bytes = (uint8_t *)&lol_endian_test_value;
  * pdp-endian big word
  * pdp-endian mixed word
  */
-static const uint8_t* lol_endian_models[] = 
+static const u8* lol_endian_models[] = 
 {
-    (uint8_t[]){0x04, 0x03, 0x02, 0x01}, /* little-endian */
-    (uint8_t[]){0x01, 0x02, 0x03, 0x04}, /* big-endian */
-    (uint8_t[]){0x03, 0x04, 0x01, 0x02}, /* pdp-endian small word */
-    (uint8_t[]){0x02, 0x01, 0x04, 0x03}, /* pdp-endian big word */
-    (uint8_t[]){0x02, 0x03, 0x04, 0x01}  /* pdp-endian mixed word */
+    (u8[]){0x04, 0x03, 0x02, 0x01}, /* little-endian */
+    (u8[]){0x01, 0x02, 0x03, 0x04}, /* big-endian */
+    (u8[]){0x03, 0x04, 0x01, 0x02}, /* pdp-endian small word */
+    (u8[]){0x02, 0x01, 0x04, 0x03}, /* pdp-endian big word */
+    (u8[]){0x02, 0x03, 0x04, 0x01}  /* pdp-endian mixed word */
 };
 
 /* function to print the byte order */
 void lol_print_byte_order()
 {
-    size_t i;
+    usize i;
     printf("[lol_endian] | Byte order:  ");
     for (i = 0; i < sizeof(lol_endian_test_value); i++)
     {
@@ -58,7 +58,7 @@ void lol_get_msb()
 void lol_get_endianness()
 {
     printf("[lol_endian] | ===--- Endianness ---===\n");
-    size_t i;   /* iterator */
+    usize i;   /* iterator */
     for (i = 0; i < sizeof(lol_endian_models)/sizeof(lol_endian_models[0]); i++)
     {
         if (   lol_endian_test_bytes[0] == lol_endian_models[i][0]
