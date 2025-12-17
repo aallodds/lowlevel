@@ -1,3 +1,10 @@
+/*===========================================================================*/
+/* Copyright (c) Grant Abernathy & Kendalynn Kohler. All rights reserved.    */
+/* Copyright (c) Against All Odds. All rights reserved.                      */
+/*                                                                           */
+/* Licensed under the MIT License. See LICENSE in the project root for       */
+/* license information.                                                      */
+/*===========================================================================*/
 #ifndef _lol_core_h_
 #define _lol_core_h_
 
