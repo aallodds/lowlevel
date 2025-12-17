@@ -43,18 +43,19 @@ void lol_print_byte_order()
 /* function to get the lsb */
 void lol_get_lsb()
 {
-    printf("[lol_endian] | LSB byte:    0x%02X\n", lol_endian_test_bytes[0]);
+    printf("[lol_endian] | LSB byte: 0x%02X\n", lol_endian_test_bytes[0]);
 }
 
 /* function to get the msb */
 void lol_get_msb()
 {
-    printf("[lol_endian] | MSB byte:    0x%02X\n", lol_endian_test_bytes[3]);
+    printf("[lol_endian] | MSB byte: 0x%02X\n", lol_endian_test_bytes[3]);
 }
 
 /* function to get the endianness */
 void lol_get_endianness()
 {
+    printf("[lol_endian] | ===--- Endianness ---===\n");
     size_t i;   /* iterator */
     for (i = 0; i < sizeof(lol_endian_models)/sizeof(lol_endian_models[0]); i++)
     {
@@ -92,10 +93,13 @@ void lol_get_endianness()
 /* entry point */
 int main(void)
 {
-    printf("[lol_endian] | Testing endianness...\n");
-    lol_print_byte_order();
+    printf("\n");
+    printf("\n[lol_endian] | ===--- LSB and MSB ---===\n");
     lol_get_lsb();
     lol_get_msb();
+    printf("\n");
     lol_get_endianness();
+    lol_print_byte_order();
+    printf("\n");
     return 0;
 }
