@@ -8,7 +8,7 @@ static const uint32_t lol_endian_test_value = 0x01020304;
 static uint8_t *lol_endian_test_bytes = (uint8_t *)&lol_endian_test_value;
 
 /**
- * table of known data models
+ * table of known endianness models
  * 
  * little-endian
  * big-endian
