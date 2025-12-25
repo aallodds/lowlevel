@@ -1,0 +1,99 @@
+name: lol builder
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-darwin:
+      name: macOS (Darwin)
+      runs-on: macos-latest
+      
+      steps:
+          - uses: actions/checkout@v4
+          
+          - name: Compile lol_endian
+            run: clang -std=c99 lol_endian.c -o lol_endian
+          
+          - name: Run lol_endian
+            run: ./lol_endian
+
+          - name: Upload lol_endian binary
+
+            uses: actions/upload-artifact@v4
+            with:
+             name: lol_endian-darwin
+             path: lol_endian
+          
+          - name: Compile lol_datamodel
+            run: clang -std=c99 lol_datamodel.c -o lol_datamodel
+
+          - name: Run lol_datamodel
+            run: ./lol_datamodel
+
+          - name: Upload lol_datamodel binary
+            uses: actions/upload-artifact@v4
+            with:
+              name: lol_datamodel-darwin
+              path: lol_datamodel
+  build-linux:
+    name: Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile lol_endian
+        run: gcc -std=c99 lol_endian.c -o lol_endian
+
+      - name: Run lol_endian
+        run: ./lol_endian
+
+      - name: Upload lol_endian binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: lol_endian-linux
+          path: lol_endian
+      
+      - name: Compile lol_datamodel
+        run: gcc -std=c99 lol_datamodel.c -o lol_datamodel
+
+      - name: Run lol_datamodel
+        run: ./lol_datamodel
+
+      - name: Upload lol_datamodel binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: lol_datamodel-linux
+          path: lol_datamodel
+  build-freebsd:
+    name: FreeBSD
+    runs-on: freebsd-12
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile lol_endian
+        run: cc -std=c99 lol_endian.c -o lol_endian
+
+      - name: Run lol_endian
+        run: ./lol_endian
+
+      - name: Upload lol_endian binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: lol_endian-freebsd
+          path: lol_endian
+      
+      - name: Compile lol_datamodel
+        run: cc -std=c99 lol_datamodel.c -o lol_datamodel
+
+      - name: Run lol_datamodel
+        run: ./lol_datamodel
+
+      - name: Upload lol_datamodel binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: lol_datamodel-freebsd
+          path: lol_datamodel
